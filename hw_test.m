@@ -1,3 +1,4 @@
+% clc; clear all; close all;
 hw02_worker = hw02();
 
 x =sqrt(2);
@@ -12,6 +13,10 @@ hw_assert(abs(c - x) < 1e-6);
 hw_assert(abs(c - x) < 1e-6);
 [c, ~] = hw02_worker.p1(@p1_func, 1, 2, 1e-9, 'steffensen');
 hw_assert(abs(c - x) < 1e-6);
+[c, ~] = hw02_worker.p1(@p1_func, 1, 2, 1e-9, 'Illinois');
+hw_assert(abs(c - x) < 1e-6);
+[c, ~] = hw02_worker.p1(@p1_func, 1, 2, 1e-9, 'Pegasus');
+hw_assert(abs(c - x) < 1e-6);
 
 
 x = 1.21;
@@ -25,6 +30,13 @@ hw_assert(abs(c - x) < 1e-6);
 hw_assert(abs(c - x) < 1e-6);
 [c, ~] = hw02_worker.p1(@p2_func, 1, 2, 1e-9, 'steffensen');
 hw_assert(abs(c - x) < 1e-6);
+[c, ~] = hw02_worker.p1(@p2_func, 1, 2, 1e-9, 'Illinois');
+hw_assert(abs(c - x) < 1e-6);
+[c, ~] = hw02_worker.p1(@p2_func, 1, 2, 1e-9, 'Pegasus');
+hw_assert(abs(c - x) < 1e-6);
+
+
+hw02_worker.p2();
 
 function hw_assert(X)
     if X; fprintf('\t PASS\n'); else; fprintf('\t FAIL\n'); end
